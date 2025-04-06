@@ -24,5 +24,14 @@ int main() {
         i++;
     } while (i <= 8);
 
+    // Implementação de Movimentação do Cavalo
+    printf("\nMovimentação do Cavalo (duas casas para baixo e uma para a esquerda):\n");
+    i = 1;
+    while (i--) {
+        for (int j = 1; j <= 2; j++) {
+            printf("Baixo\n");
+        }
+        printf("Esquerda\n");
+    }
     return 0;
 }
