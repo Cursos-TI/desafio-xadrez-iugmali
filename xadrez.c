@@ -1,37 +1,49 @@
 #include <stdio.h>
 
-int main() {
+void movimentarTorre(int casas, char *direcao) {
+    if (casas > 0) {
+        printf("%s\n", direcao);
+        movimentarTorre(casas - 1, direcao);
+    }
+}
 
+void movimentarBispo(int casas, char *direcao1, char *direcao2) {
+    if (casas > 0) {
+        for (int i = 0; i < 1; i++) {
+            printf("%s\n", direcao1);
+            for (int j = 0; j < 1; j++) {
+                printf("%s\n", direcao2);
+            }
+        }
+        movimentarBispo(casas - 1, direcao1, direcao2);
+    }
+}
+
+void movimentarRainha(int casas, char *direcao) {
+    if (casas > 0) {
+        printf("%s\n", direcao);
+        movimentarRainha(casas - 1, direcao);
+    }
+}
+
+int main() {
     // Implementação de Movimentação da Torre
     printf("Movimentação da Torre (cinco casas para a direita):\n");
-    int i = 1;
-    while (i <= 5) {
-        printf("Direita\n");
-        i++;
-    }
+    movimentarTorre(5, "Direita");
 
     // Implementação de Movimentação do Bispo
     printf("\nMovimentação do Bispo (cinco casas para cima e direita):\n");
-    for (i = 1; i <= 5; i++) {
-        printf("Cima Direita\n");
-    }
+    movimentarBispo(5, "Cima", "Direita");
 
     // Implementação de Movimentação da Rainha
     printf("\nMovimentação da Rainha (oito casas para a esquerda):\n");
-    i = 1;
-    do {
-        printf("Esquerda\n");
-        i++;
-    } while (i <= 8);
+    movimentarRainha(8, "Esquerda");
 
     // Implementação de Movimentação do Cavalo
-    printf("\nMovimentação do Cavalo (duas casas para baixo e uma para a esquerda):\n");
-    i = 1;
-    while (i--) {
-        for (int j = 1; j <= 2; j++) {
-            printf("Baixo\n");
-        }
-        printf("Esquerda\n");
+    printf("\nMovimentação do Cavalo (duas casas para cima e uma para a direita):\n");
+    for (int i = 0, j = 0; i < 2 && j < 2; i++, j++) {
+        printf("Cima\n");
+        if (j == 1) printf("Direita\n");
     }
     return 0;
 }
